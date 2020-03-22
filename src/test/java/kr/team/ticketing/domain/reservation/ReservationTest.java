@@ -12,6 +12,7 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 import static java.util.Arrays.asList;
+import static kr.team.ticketing.domain.reservation.Reservation.ReservationStatus.PAYMENT_WAITING;
 import static org.assertj.core.api.Assertions.assertThat;
 
 class ReservationTest extends DomainTests {
@@ -25,10 +26,9 @@ class ReservationTest extends DomainTests {
                 .name("김철수")
                 .email(new Email("chulsu@naver.com"))
                 .tel("010-2331-1233")
-                .reserveDate(LocalDateTime.now())
                 .build();
 
-        ReservationLineItem lineItem = new ReservationLineItem(1l, 3);
+        ReservationLineItem lineItem = new ReservationLineItem(1l);
 
         List<ReservationOption> reservationOptions = asList(
                 new ReservationOption("성인", Money.wons(17000)),

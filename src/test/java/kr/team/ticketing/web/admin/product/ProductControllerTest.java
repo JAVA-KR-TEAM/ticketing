@@ -73,7 +73,6 @@ class ProductControllerTest extends ControllerTests {
     }
 
     @DisplayName("상품 수정")
-    @Order(2)
     @Test
     void updateProduct() throws Exception {
         // given

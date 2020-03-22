@@ -15,7 +15,7 @@ import java.util.List;
 @Where(clause = "deleted = 0")
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class Reservation extends BaseEntity {
-    public enum ReservationStatus{RESERVED, CANCELED, PAYED}
+    public enum ReservationStatus{PAYMENT_WAITING, RESERVED_COMPLETE, CANCELED}
     @Column
     private Long memberId;
     @Column
@@ -35,12 +35,13 @@ public class Reservation extends BaseEntity {
     private List<ReservationLineItem> lineItems = new ArrayList<>();
 
     @Builder
-    public Reservation(Long memberId, String name, Email email, String tel, LocalDateTime reserveDate) {
+    public Reservation(Long memberId, String name, Email email, String tel) {
         this.memberId = memberId;
         this.name = name;
         this.email = email;
         this.tel = tel;
-        this.reserveDate = reserveDate;
+        this.reserveDate = LocalDateTime.now();
+        this.status = ReservationStatus.PAYMENT_WAITING;
     }
 
     public void addLineItem(ReservationLineItem lineItem) {
@@ -52,16 +53,18 @@ public class Reservation extends BaseEntity {
         lineItems.forEach(i -> addLineItem(i));
     }
 
-    public void reserved() {
-        this.status = ReservationStatus.RESERVED;
+    public void reservedComplete() {
+        this.status = ReservationStatus.RESERVED_COMPLETE;
     }
 
     public void canceled() {
+        verifyPayment();
         this.status = ReservationStatus.CANCELED;
     }
 
-    public void payed() {
-        this.status = ReservationStatus.PAYED;
+    private void verifyPayment() {
+        if(this.status == ReservationStatus.PAYMENT_WAITING)
+            throw new IllegalStateException("Haven't Payment to Reservation");
     }
 
     public void delete() {
