@@ -10,30 +10,33 @@ import kr.team.ticketing.web.reservation.request.ReservationOptionRequest;
 import kr.team.ticketing.web.reservation.request.ReservationRequest;
 import org.springframework.stereotype.Component;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
 @Component
 public class ReservationMaker {
 
-    public Reservation makeReservation(Member loginMember, ReservationRequest request) {
-        Reservation reservation = Reservation.builder()
-                .memberId(loginMember.getId())
+    public Reservation makeReservation(Long memberId, ReservationRequest request) {
+        return Reservation.builder()
+                .memberId(memberId)
                 .name(request.getName())
                 .email(new Email(request.getEmail()))
                 .tel(request.getTel())
+                .lineItems(createLineItems(request.getOptionRequests()))
                 .build();
-        reservation.addLineItem(createLineItem(request.getOptionRequests()));
-        return reservation;
     }
 
-    private ReservationLineItem createLineItem(List<ReservationOptionRequest> optionRequests) {
-        List<ReservationOption> options = optionRequests.stream()
-                .map(ReservationMaker::convertOption)
-                .collect(Collectors.toList());
-        ReservationLineItem lineItem = new ReservationLineItem(optionRequests.get(0).getProductId());
-        lineItem.addReservationOptions(options);
-        return lineItem;
+    private List<ReservationLineItem> createLineItems(List<ReservationOptionRequest> optionRequests) {
+        List<ReservationLineItem> lineItems = new ArrayList<>();
+        lineItems.add(ReservationLineItem.builder()
+                .productId(optionRequests.get(0).getProductId())
+                .description(optionRequests.get(0).getDescription())
+                .reserveOptions(optionRequests.stream()
+                        .map(ReservationMaker::convertOption)
+                        .collect(Collectors.toList()))
+                .build());
+        return lineItems;
     }
 
     private static ReservationOption convertOption(ReservationOptionRequest optionRequest) {

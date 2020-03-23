@@ -3,6 +3,7 @@ package kr.team.ticketing.domain.reservation;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import kr.team.ticketing.domain.BaseEntity;
 import lombok.AccessLevel;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
@@ -20,13 +21,18 @@ public class ReservationLineItem extends BaseEntity {
     @ManyToOne
     private Reservation reservation;
     @Column
+    private String description;
+    @Column
     private int count;
     @OneToMany(mappedBy = "lineItem", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<ReservationOption> reserveOptions = new ArrayList<>();
 
-    public ReservationLineItem(Long productId) {
+    @Builder
+    public ReservationLineItem(Long productId, String description, List<ReservationOption> reserveOptions) {
         this.productId = productId;
+        this.description = description;
         this.count = reservationCount();
+        addReservationOptions(reserveOptions);
     }
 
     private int reservationCount() {

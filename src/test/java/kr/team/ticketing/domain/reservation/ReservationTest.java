@@ -26,18 +26,18 @@ class ReservationTest extends DomainTests {
                 .name("김철수")
                 .email(new Email("chulsu@naver.com"))
                 .tel("010-2331-1233")
+                .lineItems(asList(
+                        ReservationLineItem.builder()
+                                .productId(1l)
+                                .description("뮤즈 공연입니다.")
+                                .reserveOptions(asList(
+                                        new ReservationOption("성인", Money.wons(17000)),
+                                        new ReservationOption("청소년", Money.wons(15000)),
+                                        new ReservationOption("유아", Money.wons(13000))
+                                ))
+                                .build()
+                ))
                 .build();
-
-        ReservationLineItem lineItem = new ReservationLineItem(1l);
-
-        List<ReservationOption> reservationOptions = asList(
-                new ReservationOption("성인", Money.wons(17000)),
-                new ReservationOption("청소년", Money.wons(15000)),
-                new ReservationOption("유아", Money.wons(13000))
-        );
-
-        reservation.addLineItem(lineItem);
-        lineItem.addReservationOptions(reservationOptions);
 
         reservationRepository.save(reservation);
         em.clear();

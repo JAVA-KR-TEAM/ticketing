@@ -24,7 +24,8 @@ public class Product extends BaseEntity {
     private List<Option> options = new ArrayList<>();
 
     @Builder
-    public Product(String description, String content, String event, Long categoryId) {
+    public Product(Long id, String description, String content, String event, Long categoryId) {
+        this.id = id;
         this.description = description;
         this.content = content;
         this.event = event;

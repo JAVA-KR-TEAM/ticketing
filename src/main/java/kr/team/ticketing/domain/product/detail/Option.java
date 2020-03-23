@@ -36,8 +36,12 @@ public class Option extends BaseEntity {
         this.discountRate = discountRate;
     }
 
+    private Money setPriceDiscount() {
+        return price.times(discountRate.getRate());
+    }
+
     public void setProduct(Product product) {
-        if(this.product != null) {
+        if (this.product != null) {
             this.product.getOptions().remove(this);
         }
         this.product = product;
@@ -47,5 +51,21 @@ public class Option extends BaseEntity {
         this.productType = ProductType.valueOf(param.getProductType());
         this.price = Money.wons(param.getPrice());
         this.discountRate = Ratio.valueOf(param.getDiscountRate());
+    }
+
+    public boolean isSatisfiedBy(ConvertOption convertToOption) {
+        return isSatisfied(convertToOption.getName(), convertToOption.getPrice());
+    }
+
+    private boolean isSatisfied(String optionName, Money optionPrice) {
+        if (!productType.getName().equals(optionName)) {
+            return false;
+        }
+
+        if (!price.equals(optionPrice)) {
+            return false;
+        }
+
+        return true;
     }
 }

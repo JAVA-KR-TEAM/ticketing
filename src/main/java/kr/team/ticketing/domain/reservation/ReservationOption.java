@@ -3,6 +3,7 @@ package kr.team.ticketing.domain.reservation;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import kr.team.ticketing.domain.BaseEntity;
 import kr.team.ticketing.domain.object.generic.money.Money;
+import kr.team.ticketing.domain.product.detail.ConvertOption;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -33,5 +34,9 @@ public class ReservationOption extends BaseEntity {
             this.lineItem.getReserveOptions().remove(this);
         }
         this.lineItem = lineItem;
+    }
+
+    public ConvertOption convertToOption() {
+        return new ConvertOption(name, price);
     }
 }
