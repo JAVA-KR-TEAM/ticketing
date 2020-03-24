@@ -8,13 +8,13 @@ import lombok.Setter;
 @Getter
 @Setter
 @NoArgsConstructor
-public class OptionParam {
+public class OptionRequest {
     private String productType;
     private double discountRate;
     private int price;
 
     @Builder
-    public OptionParam(String productType, double discountRate, int price) {
+    public OptionRequest(String productType, double discountRate, int price) {
         this.productType = productType;
         this.discountRate = discountRate;
         this.price = price;

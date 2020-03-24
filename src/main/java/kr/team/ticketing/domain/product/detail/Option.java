@@ -5,7 +5,7 @@ import kr.team.ticketing.domain.BaseEntity;
 import kr.team.ticketing.domain.object.generic.money.Money;
 import kr.team.ticketing.domain.object.generic.money.Ratio;
 import kr.team.ticketing.domain.product.Product;
-import kr.team.ticketing.web.admin.product.request.OptionParam;
+import kr.team.ticketing.web.admin.product.request.OptionRequest;
 import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
@@ -36,7 +36,11 @@ public class Option extends BaseEntity {
         this.discountRate = discountRate;
     }
 
-    private Money setPriceDiscount() {
+    public Money getDiscountPrice() {
+        return this.price.minus(discountPrice());
+    }
+
+    private Money discountPrice() {
         return price.times(discountRate.getRate());
     }
 
@@ -47,7 +51,7 @@ public class Option extends BaseEntity {
         this.product = product;
     }
 
-    public void update(OptionParam param) {
+    public void update(OptionRequest param) {
         this.productType = ProductType.valueOf(param.getProductType());
         this.price = Money.wons(param.getPrice());
         this.discountRate = Ratio.valueOf(param.getDiscountRate());

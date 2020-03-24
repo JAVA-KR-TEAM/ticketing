@@ -2,6 +2,7 @@ package kr.team.ticketing.domain.reservation;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import kr.team.ticketing.domain.BaseEntity;
+import kr.team.ticketing.domain.object.generic.money.Money;
 import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
@@ -35,10 +36,6 @@ public class ReservationLineItem extends BaseEntity {
         addReservationOptions(reserveOptions);
     }
 
-    private int reservationCount() {
-        return reserveOptions.size();
-    }
-
     public void addReservationOption(ReservationOption reservationOption) {
         reservationOption.setLineItem(this);
         this.reserveOptions.add(reservationOption);
@@ -53,5 +50,13 @@ public class ReservationLineItem extends BaseEntity {
             this.reservation.getLineItems().remove(this);
         }
         this.reservation = reservation;
+    }
+
+    public Money calculatePrice() {
+        return Money.sum(reserveOptions, ReservationOption::getPrice).times(count);
+    }
+
+    private int reservationCount() {
+        return reserveOptions.size();
     }
 }

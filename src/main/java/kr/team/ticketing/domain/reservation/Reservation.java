@@ -2,6 +2,7 @@ package kr.team.ticketing.domain.reservation;
 
 import kr.team.ticketing.domain.BaseEntity;
 import kr.team.ticketing.domain.object.Email;
+import kr.team.ticketing.domain.object.generic.money.Money;
 import lombok.*;
 import org.hibernate.annotations.Where;
 
@@ -85,5 +86,9 @@ public class Reservation extends BaseEntity {
     private void verifyPayment() {
         if (this.status == ReservationStatus.PAYMENT_WAITING)
             throw new IllegalStateException("Haven't Payment to Reservation");
+    }
+
+    public Money calculateTotalPrice() {
+        return Money.sum(lineItems, ReservationLineItem::calculatePrice);
     }
 }

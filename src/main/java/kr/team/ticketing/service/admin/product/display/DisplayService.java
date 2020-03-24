@@ -5,7 +5,7 @@ import kr.team.ticketing.domain.product.display.Address;
 import kr.team.ticketing.domain.product.display.Display;
 import kr.team.ticketing.domain.product.display.DisplayRepository;
 import kr.team.ticketing.domain.product.exception.DisplayNotFoundException;
-import kr.team.ticketing.web.admin.product.request.DisplayParam;
+import kr.team.ticketing.web.admin.product.request.DisplayRequest;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -18,8 +18,8 @@ public class DisplayService {
     private final DisplayRepository displayRepository;
 
     @Transactional
-    public Display save(DisplayParam displayParam) {
-        Display display = convert(displayParam);
+    public Display save(DisplayRequest displayRequest) {
+        Display display = convert(displayRequest);
         displayRepository.save(display);
         return display;
     }
@@ -36,9 +36,9 @@ public class DisplayService {
     }
 
     @Transactional
-    public void update(Long displayId, DisplayParam displayParam) {
+    public void update(Long displayId, DisplayRequest displayRequest) {
         Display display = displayRepository.getOne(displayId);
-        display.update(convert(displayParam));
+        display.update(convert(displayRequest));
         displayRepository.save(display);
     }
 
@@ -47,18 +47,18 @@ public class DisplayService {
         displayRepository.deleteById(displayId);
     }
 
-    private Display convert(DisplayParam displayParam) {
+    private Display convert(DisplayRequest displayRequest) {
         return Display.builder()
-                .productId(displayParam.getProductId())
-                .openingHours(displayParam.getOpeningHours())
+                .productId(displayRequest.getProductId())
+                .openingHours(displayRequest.getOpeningHours())
                 .address(Address.builder()
-                        .place(displayParam.getPlace())
-                        .placeLot(displayParam.getPlaceLot())
-                        .placeStreet(displayParam.getPlaceStreet())
+                        .place(displayRequest.getPlace())
+                        .placeLot(displayRequest.getPlaceLot())
+                        .placeStreet(displayRequest.getPlaceStreet())
                         .build())
-                .homePage(displayParam.getHomePage())
-                .tel(displayParam.getTel())
-                .email(new Email(displayParam.getEmail()))
+                .homePage(displayRequest.getHomePage())
+                .tel(displayRequest.getTel())
+                .email(new Email(displayRequest.getEmail()))
                 .build();
     }
 }

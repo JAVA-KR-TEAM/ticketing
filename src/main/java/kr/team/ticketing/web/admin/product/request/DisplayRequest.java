@@ -8,7 +8,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @NoArgsConstructor
-public class DisplayParam {
+public class DisplayRequest {
     private Long productId;
     private String openingHours;
     private String place;
@@ -19,7 +19,7 @@ public class DisplayParam {
     private String email;
 
     @Builder
-    public DisplayParam(Long productId, String openingHours, String place, String placeLot, String placeStreet, String tel, String homePage, String email) {
+    public DisplayRequest(Long productId, String openingHours, String place, String placeLot, String placeStreet, String tel, String homePage, String email) {
         this.productId = productId;
         this.openingHours = openingHours;
         this.place = place;

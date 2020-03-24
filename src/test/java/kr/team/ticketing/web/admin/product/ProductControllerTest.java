@@ -9,7 +9,7 @@ import kr.team.ticketing.domain.product.category.Category;
 import kr.team.ticketing.domain.product.category.CategoryRepository;
 import kr.team.ticketing.domain.product.detail.Option;
 import kr.team.ticketing.domain.product.detail.ProductType;
-import kr.team.ticketing.web.admin.product.request.OptionParam;
+import kr.team.ticketing.web.admin.product.request.OptionRequest;
 import org.junit.jupiter.api.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
@@ -131,18 +131,18 @@ class ProductControllerTest extends ControllerTests {
     @Test
     void saveOptions() throws Exception {
         // given
-        List<OptionParam> params = asList(
-                OptionParam.builder()
+        List<OptionRequest> params = asList(
+                OptionRequest.builder()
                         .productType("ADULT")
                         .discountRate(0.2)
                         .price(17000)
                         .build(),
-                OptionParam.builder()
+                OptionRequest.builder()
                         .productType("TEENAGER")
                         .discountRate(0.25)
                         .price(15000)
                         .build(),
-                OptionParam.builder()
+                OptionRequest.builder()
                         .productType("CHILDREN")
                         .discountRate(0.3)
                         .price(13000)

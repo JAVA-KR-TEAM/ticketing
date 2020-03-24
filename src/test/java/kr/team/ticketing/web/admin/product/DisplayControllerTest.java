@@ -4,7 +4,7 @@ import kr.team.ticketing.common.ControllerTests;
 import kr.team.ticketing.domain.object.Email;
 import kr.team.ticketing.domain.product.display.Display;
 import kr.team.ticketing.domain.product.display.DisplayRepository;
-import kr.team.ticketing.web.admin.product.request.DisplayParam;
+import kr.team.ticketing.web.admin.product.request.DisplayRequest;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
@@ -32,7 +32,7 @@ class DisplayControllerTest extends ControllerTests {
     @Test
     void saveDisplay() throws Exception {
         // given
-        DisplayParam param = DisplayParam.builder()
+        DisplayRequest param = DisplayRequest.builder()
                 .productId(1l)
                 .openingHours("2020년 3월 15일부터 2020년 4월 15일까지 진행되는 행사입니다.")
                 .place("세종정부청사")
@@ -67,7 +67,7 @@ class DisplayControllerTest extends ControllerTests {
     @Test
     void updateDisplay() throws Exception {
         // given
-        DisplayParam param = DisplayParam.builder()
+        DisplayRequest param = DisplayRequest.builder()
                 .productId(2l)
                 .openingHours("2020년 3월 15일부터 2020년 4월 15일까지 진행되는 행사입니다.")
                 .place("세종정부청사")

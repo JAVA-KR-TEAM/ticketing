@@ -47,7 +47,7 @@ public class ReservationValidator {
             }
         }
 
-        throw new IllegalStateException("상품 옵션이 변경되었습니다.");
+        throw new IllegalStateException("상품의 옵션이 변경되었습니다.");
     }
 
     private Map<Long, Product> getProduct(Reservation reservation) {

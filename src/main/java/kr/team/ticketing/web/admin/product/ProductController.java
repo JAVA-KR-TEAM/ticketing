@@ -4,7 +4,7 @@ import kr.team.ticketing.domain.product.Product;
 import kr.team.ticketing.domain.product.detail.Option;
 import kr.team.ticketing.service.admin.product.ProductService;
 import kr.team.ticketing.service.admin.product.option.OptionService;
-import kr.team.ticketing.web.admin.product.request.OptionParam;
+import kr.team.ticketing.web.admin.product.request.OptionRequest;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -58,8 +58,8 @@ public class ProductController {
 
     @PostMapping("/{productId}/options")
     public ResponseEntity saveOptions(@PathVariable Long productId,
-                                      @RequestBody List<OptionParam> optionParams) {
-        List<Option> saveOptions = optionService.save(productId, optionParams);
+                                      @RequestBody List<OptionRequest> optionRequests) {
+        List<Option> saveOptions = optionService.save(productId, optionRequests);
         URI uri = linkTo(ProductController.class).slash(productId).slash("options").toUri();
         return ResponseEntity.created(uri).body(saveOptions);
     }
@@ -67,8 +67,8 @@ public class ProductController {
     @PutMapping("/{productId}/options/{optionId}")
     public ResponseEntity updateOption(@PathVariable Long productId,
                                         @PathVariable Long optionId,
-                                        @RequestBody OptionParam param) {
-        optionService.update(productId, optionId, param);
+                                        @RequestBody OptionRequest request) {
+        optionService.update(productId, optionId, request);
         return ResponseEntity.ok().build();
     }
 

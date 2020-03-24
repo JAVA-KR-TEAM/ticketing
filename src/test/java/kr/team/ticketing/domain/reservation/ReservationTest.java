@@ -8,11 +8,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import java.time.LocalDateTime;
-import java.util.List;
-
 import static java.util.Arrays.asList;
-import static kr.team.ticketing.domain.reservation.Reservation.ReservationStatus.PAYMENT_WAITING;
 import static org.assertj.core.api.Assertions.assertThat;
 
 class ReservationTest extends DomainTests {

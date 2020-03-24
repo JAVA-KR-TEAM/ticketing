@@ -7,7 +7,7 @@ import kr.team.ticketing.domain.product.ProductRepository;
 import kr.team.ticketing.domain.product.detail.Option;
 import kr.team.ticketing.domain.product.detail.OptionRepository;
 import kr.team.ticketing.domain.product.detail.ProductType;
-import kr.team.ticketing.web.admin.product.request.OptionParam;
+import kr.team.ticketing.web.admin.product.request.OptionRequest;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -25,7 +25,7 @@ public class OptionService {
     private final ProductRepository productRepository;
 
     @Transactional
-    public List<Option> save(Long productId, List<OptionParam> params) {
+    public List<Option> save(Long productId, List<OptionRequest> params) {
         Product product = productRepository.getOne(productId);
         List<Option> options = params.stream()
                 .map(OptionService::convert)
@@ -36,7 +36,7 @@ public class OptionService {
     }
 
     @Transactional
-    public void update(Long productId, Long optionId, OptionParam param) {
+    public void update(Long productId, Long optionId, OptionRequest param) {
         Product product = productRepository.getOne(productId);
         Option option = optionRepository.getOne(optionId);
         option.update(param);
@@ -60,7 +60,7 @@ public class OptionService {
         product.getOptions().removeIf(option -> option.getId().equals(optionId));
     }
 
-    private static Option convert(OptionParam param) {
+    private static Option convert(OptionRequest param) {
         return Option.builder()
                 .price(Money.wons(param.getPrice()))
                 .discountRate(Ratio.valueOf(param.getDiscountRate()))

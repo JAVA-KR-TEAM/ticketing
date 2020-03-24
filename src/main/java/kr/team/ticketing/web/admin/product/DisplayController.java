@@ -2,7 +2,7 @@ package kr.team.ticketing.web.admin.product;
 
 import kr.team.ticketing.domain.product.display.Display;
 import kr.team.ticketing.service.admin.product.display.DisplayService;
-import kr.team.ticketing.web.admin.product.request.DisplayParam;
+import kr.team.ticketing.web.admin.product.request.DisplayRequest;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -20,16 +20,16 @@ public class DisplayController {
     private final DisplayService displayService;
 
     @PostMapping
-    public ResponseEntity saveDisplay(@RequestBody DisplayParam displayParam) {
-        Display display = displayService.save(displayParam);
+    public ResponseEntity saveDisplay(@RequestBody DisplayRequest displayRequest) {
+        Display display = displayService.save(displayRequest);
         URI uri = linkTo(DisplayController.class).slash(display.getId()).toUri();
         return ResponseEntity.created(uri).body(display);
     }
 
     @PutMapping("/{displayId}")
     public ResponseEntity updateDisplay(@PathVariable Long displayId,
-                                        @RequestBody DisplayParam displayParam) {
-        displayService.update(displayId, displayParam);
+                                        @RequestBody DisplayRequest displayRequest) {
+        displayService.update(displayId, displayRequest);
         return ResponseEntity.ok().build();
     }
 
