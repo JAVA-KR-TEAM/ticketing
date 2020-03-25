@@ -9,24 +9,25 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 public class DisplayRequest {
-    private Long productId;
-    private String openingHours;
-    private String place;
-    private String placeLot;
-    private String placeStreet;
-    private String tel;
-    private String homePage;
-    private String email;
+	private Long productId;
+	private String openingHours;
+	private String place;
+	private String placeLot;
+	private String placeStreet;
+	private String tel;
+	private String homePage;
+	private String email;
 
-    @Builder
-    public DisplayRequest(Long productId, String openingHours, String place, String placeLot, String placeStreet, String tel, String homePage, String email) {
-        this.productId = productId;
-        this.openingHours = openingHours;
-        this.place = place;
-        this.placeLot = placeLot;
-        this.placeStreet = placeStreet;
-        this.tel = tel;
-        this.homePage = homePage;
-        this.email = email;
-    }
+	@Builder
+	public DisplayRequest(Long productId, String openingHours, String place, String placeLot, String placeStreet,
+		String tel, String homePage, String email) {
+		this.productId = productId;
+		this.openingHours = openingHours;
+		this.place = place;
+		this.placeLot = placeLot;
+		this.placeStreet = placeStreet;
+		this.tel = tel;
+		this.homePage = homePage;
+		this.email = email;
+	}
 }

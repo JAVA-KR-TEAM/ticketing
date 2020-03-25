@@ -6,12 +6,12 @@ import lombok.Data;
 
 @Data
 public class ConvertOption {
-    private String name;
-    private Money price;
+	private String name;
+	private Money price;
 
-    @Builder
-    public ConvertOption(String name, Money price) {
-        this.name = name;
-        this.price = price;
-    }
+	@Builder
+	public ConvertOption(String name, Money price) {
+		this.name = name;
+		this.price = price;
+	}
 }

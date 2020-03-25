@@ -11,16 +11,16 @@ import java.util.List;
 @Setter
 @NoArgsConstructor
 public class ReservationRequest {
-    private String name;
-    private String email;
-    private String tel;
-    private List<ReservationOptionRequest> optionRequests;
+	private String name;
+	private String email;
+	private String tel;
+	private List<ReservationOptionRequest> optionRequests;
 
-    @Builder
-    public ReservationRequest(String name, String email, String tel, List<ReservationOptionRequest> optionRequests) {
-        this.name = name;
-        this.email = email;
-        this.tel = tel;
-        this.optionRequests = optionRequests;
-    }
+	@Builder
+	public ReservationRequest(String name, String email, String tel, List<ReservationOptionRequest> optionRequests) {
+		this.name = name;
+		this.email = email;
+		this.tel = tel;
+		this.optionRequests = optionRequests;
+	}
 }

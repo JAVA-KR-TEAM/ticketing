@@ -21,7 +21,7 @@
 **etc**
 - Configure Management: Git, Github
 - Build: Gradle 5.6.4
-- Coding Convention: Intellij Default
+- Coding Convention: Naver Hackday Convention
 
 ### Commit Convention
 

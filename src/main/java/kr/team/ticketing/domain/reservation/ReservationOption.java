@@ -16,27 +16,27 @@ import javax.persistence.ManyToOne;
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class ReservationOption extends BaseEntity {
-    @JsonIgnore
-    @ManyToOne
-    private ReservationLineItem lineItem;
-    @Column
-    private String name;
-    @Column
-    private Money price;
+	@JsonIgnore
+	@ManyToOne
+	private ReservationLineItem lineItem;
+	@Column
+	private String name;
+	@Column
+	private Money price;
 
-    public ReservationOption(String name, Money price) {
-        this.name = name;
-        this.price = price;
-    }
+	public ReservationOption(String name, Money price) {
+		this.name = name;
+		this.price = price;
+	}
 
-    public void setLineItem(ReservationLineItem lineItem) {
-        if(this.lineItem != null) {
-            this.lineItem.getReserveOptions().remove(this);
-        }
-        this.lineItem = lineItem;
-    }
+	public void setLineItem(ReservationLineItem lineItem) {
+		if (this.lineItem != null) {
+			this.lineItem.getReserveOptions().remove(this);
+		}
+		this.lineItem = lineItem;
+	}
 
-    public ConvertOption convertToOption() {
-        return new ConvertOption(name, price);
-    }
+	public ConvertOption convertToOption() {
+		return new ConvertOption(name, price);
+	}
 }

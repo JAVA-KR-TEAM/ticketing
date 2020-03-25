@@ -15,15 +15,15 @@ import javax.persistence.Entity;
 @DiscriminatorValue("COMMENT")
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class CommentImage extends Image {
-    @Column
-    private Long reservationId;
-    @Column
-    private Long displayId;
+	@Column
+	private Long reservationId;
+	@Column
+	private Long displayId;
 
-    @Builder
-    public CommentImage(String imgName, String saveImgName, String contentType, Long reservationId, Long displayId) {
-        super(imgName, saveImgName, contentType);
-        this.reservationId = reservationId;
-        this.displayId = displayId;
-    }
+	@Builder
+	public CommentImage(String imgName, String saveImgName, String contentType, Long reservationId, Long displayId) {
+		super(imgName, saveImgName, contentType);
+		this.reservationId = reservationId;
+		this.displayId = displayId;
+	}
 }

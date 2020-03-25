@@ -9,11 +9,11 @@ import java.nio.charset.StandardCharsets;
 
 @Configuration
 public class WebConfig {
-    @Bean
-    public RestTemplate restTemplate() {
-        RestTemplate restTemplate = new RestTemplate();
-        restTemplate.getMessageConverters()
-                .add(0, new StringHttpMessageConverter(StandardCharsets.UTF_8));
-        return restTemplate;
-    }
+	@Bean
+	public RestTemplate restTemplate() {
+		RestTemplate restTemplate = new RestTemplate();
+		restTemplate.getMessageConverters()
+			.add(0, new StringHttpMessageConverter(StandardCharsets.UTF_8));
+		return restTemplate;
+	}
 }

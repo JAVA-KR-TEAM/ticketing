@@ -12,21 +12,21 @@ import javax.persistence.Embeddable;
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class Email {
 
-    @javax.validation.constraints.Email
-    @Column(name = "EMAIL", nullable = false, unique = true)
-    private String value;
+	@javax.validation.constraints.Email
+	@Column(name = "EMAIL", nullable = false, unique = true)
+	private String value;
 
-    public Email(@javax.validation.constraints.Email String value) {
-        this.value = value;
-    }
+	public Email(@javax.validation.constraints.Email String value) {
+		this.value = value;
+	}
 
-    public String getHost() {
-        int index = value.indexOf("@");
-        return value.substring(index);
-    }
+	public String getHost() {
+		int index = value.indexOf("@");
+		return value.substring(index);
+	}
 
-    public String getId() {
-        int index = value.indexOf("@");
-        return value.substring(0, index);
-    }
+	public String getId() {
+		int index = value.indexOf("@");
+		return value.substring(0, index);
+	}
 }

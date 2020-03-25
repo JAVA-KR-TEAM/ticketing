@@ -9,16 +9,16 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 public class ReservationOptionRequest {
-    private Long productId;
-    private String description;
-    private String name;
-    private int price;
+	private Long productId;
+	private String description;
+	private String name;
+	private int price;
 
-    @Builder
-    public ReservationOptionRequest(Long productId, String description, String name, int price) {
-        this.productId = productId;
-        this.description = description;
-        this.name = name;
-        this.price = price;
-    }
+	@Builder
+	public ReservationOptionRequest(Long productId, String description, String name, int price) {
+		this.productId = productId;
+		this.description = description;
+		this.name = name;
+		this.price = price;
+	}
 }

@@ -11,17 +11,17 @@ import javax.persistence.Embeddable;
 @Embeddable
 @NoArgsConstructor
 public class Address {
-    @Column
-    private String place;        // 장소
-    @Column
-    private String placeLot;      // 지번주소
-    @Column
-    private String placeStreet;   // 도로명주소
+	@Column
+	private String place;
+	@Column
+	private String placeLot;
+	@Column
+	private String placeStreet;
 
-    @Builder
-    public Address(String place, String placeLot, String placeStreet) {
-        this.place = place;
-        this.placeLot = placeLot;
-        this.placeStreet = placeStreet;
-    }
+	@Builder
+	public Address(String place, String placeLot, String placeStreet) {
+		this.place = place;
+		this.placeLot = placeLot;
+		this.placeStreet = placeStreet;
+	}
 }

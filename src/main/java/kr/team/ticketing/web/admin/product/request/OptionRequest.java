@@ -9,14 +9,14 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 public class OptionRequest {
-    private String productType;
-    private double discountRate;
-    private int price;
+	private String productType;
+	private double discountRate;
+	private int price;
 
-    @Builder
-    public OptionRequest(String productType, double discountRate, int price) {
-        this.productType = productType;
-        this.discountRate = discountRate;
-        this.price = price;
-    }
+	@Builder
+	public OptionRequest(String productType, double discountRate, int price) {
+		this.productType = productType;
+		this.discountRate = discountRate;
+		this.price = price;
+	}
 }
