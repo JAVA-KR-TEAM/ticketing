@@ -2,6 +2,7 @@ package kr.team.ticketing.service.admin.product;
 
 import kr.team.ticketing.domain.product.Product;
 import kr.team.ticketing.domain.product.ProductRepository;
+import kr.team.ticketing.domain.product.exception.ProductNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -16,7 +17,7 @@ public class ProductService {
     @Transactional
     public Product find(Long productId) {
         return productRepository.findById(productId)
-                .orElseThrow(() -> new IllegalArgumentException("해당 상품이 존재하지 않습니다."));
+                .orElseThrow(() -> new ProductNotFoundException("해당 상품이 존재하지 않습니다."));
     }
 
     @Transactional

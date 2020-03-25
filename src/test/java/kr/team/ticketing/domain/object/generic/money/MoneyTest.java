@@ -12,7 +12,7 @@ class MoneyTest {
     @Nested
     @DisplayName("Equals 메서드")
     class Describe_equality{
-        @DisplayName("값의 동등성 비교")
+        @DisplayName("값의 동치성 비교")
         @Test
         void equality() {
             Money excepted = Money.wons(15000);

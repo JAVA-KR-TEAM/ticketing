@@ -4,6 +4,7 @@ import kr.team.ticketing.domain.object.Email;
 import kr.team.ticketing.domain.product.display.Address;
 import kr.team.ticketing.domain.product.display.Display;
 import kr.team.ticketing.domain.product.display.DisplayRepository;
+import kr.team.ticketing.domain.product.exception.DisplayNotFoundException;
 import kr.team.ticketing.web.admin.product.request.DisplayParam;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
@@ -31,7 +32,7 @@ public class DisplayService {
     @Transactional
     public Display find(Long displayId) {
         return displayRepository.findById(displayId)
-                .orElseThrow(() -> new IllegalArgumentException("해당 전시 정보가 존재하지 않습니다."));
+                .orElseThrow(() -> new DisplayNotFoundException("해당 전시 정보가 존재하지 않습니다."));
     }
 
     @Transactional
