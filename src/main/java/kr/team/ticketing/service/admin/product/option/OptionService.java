@@ -31,7 +31,7 @@ public class OptionService {
 		List<Option> options = params.stream()
 			.map(OptionService::convert)
 			.collect(toList());
-		options.forEach(o -> o.setProduct(product));
+		options.forEach(o -> o.addProduct(product));
 		optionRepository.saveAll(options);
 		return options;
 	}
@@ -41,7 +41,7 @@ public class OptionService {
 		Product product = productRepository.getOne(productId);
 		Option option = optionRepository.getOne(optionId);
 		option.update(param);
-		option.setProduct(product);
+		option.addProduct(product);
 		optionRepository.save(option);
 	}
 

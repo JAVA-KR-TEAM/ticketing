@@ -44,7 +44,7 @@ public class Option extends BaseEntity {
 		return price.times(discountRate.getRate());
 	}
 
-	public void setProduct(Product product) {
+	public void addProduct(Product product) {
 		if (this.product != null) {
 			this.product.getOptions().remove(this);
 		}

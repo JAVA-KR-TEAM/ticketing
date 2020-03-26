@@ -38,7 +38,7 @@ public class ReservationLineItem extends BaseEntity {
 	}
 
 	public void addReservationOption(ReservationOption reservationOption) {
-		reservationOption.setLineItem(this);
+		reservationOption.addLineItem(this);
 		this.reserveOptions.add(reservationOption);
 	}
 
@@ -46,7 +46,7 @@ public class ReservationLineItem extends BaseEntity {
 		reserveOptions.forEach(o -> addReservationOption(o));
 	}
 
-	public void setReservation(Reservation reservation) {
+	public void addReservation(Reservation reservation) {
 		if (this.reservation != null) {
 			this.reservation.getLineItems().remove(this);
 		}

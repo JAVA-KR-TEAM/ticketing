@@ -53,7 +53,7 @@ class MoneyTest {
 	class Describe_times {
 		@DisplayName("값을 곱한 후 새로운 Money 반환")
 		@Test
-		void plus() {
+		void times() {
 			Money excepted = Money.wons(15000);
 			Money actual = excepted.times(0.2);
 
@@ -66,7 +66,7 @@ class MoneyTest {
 	class Describe_divide {
 		@DisplayName("값을 나눈 후 새로운 Money 반환")
 		@Test
-		void plus() {
+		void divide() {
 			Money excepted = Money.wons(15000);
 			Money actual = excepted.divide(0.6);
 

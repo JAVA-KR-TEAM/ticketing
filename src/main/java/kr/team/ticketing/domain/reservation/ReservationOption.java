@@ -29,7 +29,7 @@ public class ReservationOption extends BaseEntity {
 		this.price = price;
 	}
 
-	public void setLineItem(ReservationLineItem lineItem) {
+	public void addLineItem(ReservationLineItem lineItem) {
 		if (this.lineItem != null) {
 			this.lineItem.getReserveOptions().remove(this);
 		}

@@ -34,7 +34,7 @@ public class Product extends BaseEntity {
 	}
 
 	public void addOption(Option option) {
-		option.setProduct(this);
+		option.addProduct(this);
 		this.options.add(option);
 	}
 

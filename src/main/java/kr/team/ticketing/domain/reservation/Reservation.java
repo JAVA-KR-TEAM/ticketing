@@ -61,7 +61,7 @@ public class Reservation extends BaseEntity {
 	}
 
 	public void addLineItem(ReservationLineItem lineItem) {
-		lineItem.setReservation(this);
+		lineItem.addReservation(this);
 		this.lineItems.add(lineItem);
 	}
 
