@@ -20,7 +20,7 @@ public class ReservationLineItem extends BaseEntity {
 	@Column
 	private Long productId;
 	@JsonIgnore
-	@ManyToOne
+	@ManyToOne(fetch = FetchType.LAZY)
 	private Reservation reservation;
 	@Column
 	private String description;

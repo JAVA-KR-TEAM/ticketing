@@ -26,7 +26,7 @@ public class Option extends BaseEntity {
 	@Column
 	private Ratio discountRate;
 	@JsonIgnore
-	@ManyToOne
+	@ManyToOne(fetch = FetchType.LAZY)
 	private Product product;
 
 	@Builder
