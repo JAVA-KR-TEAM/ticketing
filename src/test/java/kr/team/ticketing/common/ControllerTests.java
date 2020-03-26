@@ -2,6 +2,7 @@ package kr.team.ticketing.common;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.MethodOrderer;
 import org.junit.jupiter.api.TestMethodOrder;
@@ -31,23 +32,23 @@ import static org.springframework.restdocs.mockmvc.MockMvcRestDocumentation.docu
 @ExtendWith({RestDocumentationExtension.class, SpringExtension.class})
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 public class ControllerTests {
-    @Autowired
-    protected MockMvc mockMvc;
+	@Autowired
+	protected MockMvc mockMvc;
 
-    @Autowired
-    protected ObjectMapper objectMapper;
+	@Autowired
+	protected ObjectMapper objectMapper;
 
-    protected static String getUri(Class<?> clazz) {
-        return linkTo(clazz).toString();
-    }
+	protected static String getUri(Class<?> clazz) {
+		return linkTo(clazz).toString();
+	}
 
-    @BeforeEach
-    protected void setUp(WebApplicationContext webApplicationContext,
-                         RestDocumentationContextProvider restDocumentationContextProvider) {
-        this.mockMvc = MockMvcBuilders.webAppContextSetup(webApplicationContext)
-                .addFilter(new CharacterEncodingFilter("UTF-8", true))
-                .apply(documentationConfiguration(restDocumentationContextProvider))
-                .build();
-        this.objectMapper.enable(SerializationFeature.INDENT_OUTPUT);
-    }
+	@BeforeEach
+	protected void setUp(WebApplicationContext webApplicationContext,
+		RestDocumentationContextProvider restDocumentationContextProvider) {
+		this.mockMvc = MockMvcBuilders.webAppContextSetup(webApplicationContext)
+			.addFilter(new CharacterEncodingFilter("UTF-8", true))
+			.apply(documentationConfiguration(restDocumentationContextProvider))
+			.build();
+		this.objectMapper.enable(SerializationFeature.INDENT_OUTPUT);
+	}
 }

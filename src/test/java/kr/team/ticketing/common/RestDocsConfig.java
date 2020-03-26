@@ -10,15 +10,15 @@ import static org.springframework.restdocs.operation.preprocess.Preprocessors.pr
 @Configuration
 public class RestDocsConfig {
 
-    @Bean
-    public RestDocsMockMvcConfigurationCustomizer customizer() {
-        return new RestDocsMockMvcConfigurationCustomizer() {
-            @Override
-            public void customize(MockMvcRestDocumentationConfigurer configurer) {
-                configurer.operationPreprocessors()
-                        .withRequestDefaults(prettyPrint())
-                        .withResponseDefaults(prettyPrint());
-            }
-        };
-    }
+	@Bean
+	public RestDocsMockMvcConfigurationCustomizer customizer() {
+		return new RestDocsMockMvcConfigurationCustomizer() {
+			@Override
+			public void customize(MockMvcRestDocumentationConfigurer configurer) {
+				configurer.operationPreprocessors()
+					.withRequestDefaults(prettyPrint())
+					.withResponseDefaults(prettyPrint());
+			}
+		};
+	}
 }
