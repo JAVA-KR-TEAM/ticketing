@@ -13,6 +13,8 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import static kr.team.ticketing.domain.object.utils.DateTimeUtils.createDateTime;
+
 @Service
 @RequiredArgsConstructor
 public class DisplayService {
@@ -52,10 +54,13 @@ public class DisplayService {
 		return Display.builder()
 			.productId(displayRequest.getProductId())
 			.openingHours(displayRequest.getOpeningHours())
+			.startDate(createDateTime(displayRequest.getStartDate()))
+			.endDate(createDateTime(displayRequest.getEndDate()))
 			.address(Address.builder()
 				.place(displayRequest.getPlace())
 				.placeLot(displayRequest.getPlaceLot())
 				.placeStreet(displayRequest.getPlaceStreet())
+				.locationCode(displayRequest.getLocationCode())
 				.build())
 			.homePage(displayRequest.getHomePage())
 			.tel(displayRequest.getTel())
