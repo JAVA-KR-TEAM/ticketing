@@ -6,12 +6,19 @@ import lombok.*;
 
 import javax.persistence.*;
 
-
 @Getter
 @Entity
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class Member extends BaseEntity {
-    // TODO Spring Security OAuth2 Client 구현.
-    @Embedded
-    private Email email;
+	@Column
+	private String name;
+	@Embedded
+	private Email email;
+
+	@Builder
+	public Member(Long id, String name, Email email) {
+		this.id = id;
+		this.name = name;
+		this.email = email;
+	}
 }

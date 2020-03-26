@@ -14,13 +14,13 @@ import javax.persistence.*;
 @DiscriminatorValue("DISPLAY")
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class DisplayImage extends Image {
-    @Enumerated(EnumType.STRING)
-    @Column
-    private ImageType imageType;
+	@Enumerated(EnumType.STRING)
+	@Column
+	private ImageType imageType;
 
-    @Builder
-    public DisplayImage(String imgName, String saveImgName, String contentType, ImageType imageType) {
-        super(imgName, saveImgName, contentType);
-        this.imageType = imageType;
-    }
+	@Builder
+	public DisplayImage(String imgName, String saveImgName, String contentType, ImageType imageType) {
+		super(imgName, saveImgName, contentType);
+		this.imageType = imageType;
+	}
 }
