@@ -21,7 +21,7 @@ public class IndexController {
 
 	@GetMapping("/search")
 	public Page<ProductSearchResponse> searchByCondition(@RequestBody SearchCondition searchCondition,
-		@PageableDefault(size = 10, sort = "endDisplayDate", direction = Sort.Direction.DESC) Pageable pageable) {
+		@PageableDefault(sort = "endDisplayDate", direction = Sort.Direction.DESC) Pageable pageable) {
 		return productRepository.searchByDynamicCondition(searchCondition, pageable);
 	}
 }
