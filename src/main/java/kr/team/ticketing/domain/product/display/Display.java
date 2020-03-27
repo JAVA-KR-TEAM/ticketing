@@ -20,9 +20,9 @@ public class Display extends BaseEntity {
     @Column
     private String openingHours;
     @Column
-    private LocalDateTime startDate;
+    private LocalDateTime startDisplayDate;
     @Column
-    private LocalDateTime endDate;
+    private LocalDateTime endDisplayDate;
     @Embedded
     private Address address;
     @Column
@@ -33,11 +33,11 @@ public class Display extends BaseEntity {
     private Email email;
 
     @Builder
-    public Display(Long productId, String openingHours, LocalDateTime startDate, LocalDateTime endDate, Address address, String tel, String homePage, Email email) {
+    public Display(Long productId, String openingHours, LocalDateTime startDisplayDate, LocalDateTime endDisplayDate, Address address, String tel, String homePage, Email email) {
         this.productId = productId;
         this.openingHours = openingHours;
-        this.startDate = startDate;
-        this.endDate = endDate;
+        this.startDisplayDate = startDisplayDate;
+        this.endDisplayDate = endDisplayDate;
         this.address = address;
         this.tel = tel;
         this.homePage = homePage;
@@ -47,8 +47,8 @@ public class Display extends BaseEntity {
     public void update(Display displayDto) {
         this.productId = displayDto.getProductId();
         this.openingHours = displayDto.getOpeningHours();
-        this.startDate = displayDto.getStartDate();
-        this.endDate = displayDto.getEndDate();
+        this.startDisplayDate = displayDto.getStartDisplayDate();
+        this.endDisplayDate = displayDto.getEndDisplayDate();
         this.address = displayDto.getAddress();
         this.tel = displayDto.getTel();
         this.homePage = displayDto.getHomePage();

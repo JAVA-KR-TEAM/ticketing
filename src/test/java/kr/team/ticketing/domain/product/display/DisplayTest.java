@@ -30,8 +30,8 @@ class DisplayTest extends DomainTests {
 						.locationCode("SE")
                         .build())
                 .openingHours("2020년 3월 1일부터 2020년 3월 31일까지 열리는 대박 공연")
-                .startDate(LocalDateTime.of(2020, 3, 1, 10, 00, 00))
-                .endDate(LocalDateTime.of(2020, 3, 31, 17, 00, 00))
+                .startDisplayDate(LocalDateTime.of(2020, 3, 1, 10, 00, 00))
+                .endDisplayDate(LocalDateTime.of(2020, 3, 31, 17, 00, 00))
                 .tel("010-2331-4123")
                 .build();
 

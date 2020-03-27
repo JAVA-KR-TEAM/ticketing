@@ -1,13 +1,14 @@
 package kr.team.ticketing.domain.product;
 
-import kr.team.ticketing.web.admin.product.request.SearchCondition;
+
+import kr.team.ticketing.web.index.request.SearchCondition;
+import kr.team.ticketing.web.index.response.ProductSearchResponse;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
 
 public interface ProductRepositoryCustom {
 
-    Page<Product> searchAll(Pageable pageable);//장르상관없이 전부
-    Page<Product> searchByDynamicCondition(SearchCondition searchCondition, Pageable pageable);
+    Page<ProductSearchResponse> searchByDynamicCondition(SearchCondition searchCondition, Pageable pageable);
 
 }

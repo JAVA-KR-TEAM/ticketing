@@ -1,6 +1,5 @@
-package kr.team.ticketing.web.admin.product.request;
+package kr.team.ticketing.web.index.request;
 
-import kr.team.ticketing.domain.product.display.LocationCode;
 import lombok.*;
 
 

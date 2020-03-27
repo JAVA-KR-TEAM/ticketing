@@ -1,8 +1,8 @@
 package kr.team.ticketing.web.index;
 
-import kr.team.ticketing.domain.product.Product;
 import kr.team.ticketing.domain.product.ProductRepository;
-import kr.team.ticketing.web.admin.product.request.SearchCondition;
+import kr.team.ticketing.web.index.request.SearchCondition;
+import kr.team.ticketing.web.index.response.ProductSearchResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -18,14 +18,9 @@ public class IndexController {
 
 	private final ProductRepository productRepository;
 
-	@GetMapping("/api")
-	public String index() {
-		return "Hello Ticket";
-	}
-
 	@GetMapping("/search")
-	public Page<Product> searchByCondition(@RequestBody SearchCondition searchCondition,
-	   @PageableDefault(size = 10, sort = "endDate", direction = Sort.Direction.DESC) Pageable pageable) {
+	public Page<ProductSearchResponse> searchByCondition(@RequestBody SearchCondition searchCondition,
+														 @PageableDefault(size = 10, sort = "endDisplayDate", direction = Sort.Direction.DESC) Pageable pageable) {
 		return productRepository.searchByDynamicCondition(searchCondition, pageable);
 	}
 }

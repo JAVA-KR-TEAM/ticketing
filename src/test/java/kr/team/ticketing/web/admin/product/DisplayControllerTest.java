@@ -13,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.restdocs.payload.JsonFieldType;
 
+import java.time.LocalDateTime;
 import java.util.stream.IntStream;
 
 import static org.springframework.restdocs.mockmvc.MockMvcRestDocumentation.document;
@@ -32,12 +33,13 @@ class DisplayControllerTest extends ControllerTests {
     @Order(1)
     @Test
     void saveDisplay() throws Exception {
+
         // given
         DisplayRequest param = DisplayRequest.builder()
                 .productId(1l)
                 .openingHours("2020년 3월 15일부터 2020년 4월 15일까지 진행되는 행사입니다.")
-                .startDate("2020-03-01 10:00")
-                .endDate("2020-04-01 10:00")
+                .startDisplayDate(LocalDateTime.of(2020,3,15,00,00,00))
+                .endDisplayDate(LocalDateTime.of(2020,4,15,00,00,00))
                 .place("세종정부청사")
                 .placeLot("경기도 세종시 231-31")
                 .placeStreet("경기도 세종시 세종로 132번길 34")
@@ -57,12 +59,12 @@ class DisplayControllerTest extends ControllerTests {
                         requestFields(
                                 fieldWithPath("productId").type(JsonFieldType.NUMBER).description("상품 번호"),
                                 fieldWithPath("openingHours").type(JsonFieldType.STRING).description("오프닝 정보"),
-                                fieldWithPath("startDate").type(JsonFieldType.STRING).description("전시시작 날짜"),
-                                fieldWithPath("endDate").type(JsonFieldType.STRING).description("전시종료 날짜"),
+                                fieldWithPath("startDisplayDate").type(JsonFieldType.STRING).description("전시시작 날짜"),
+                                fieldWithPath("endDisplayDate").type(JsonFieldType.STRING).description("전시종료 날짜"),
                                 fieldWithPath("place").type(JsonFieldType.STRING).description("전시 장소"),
                                 fieldWithPath("placeLot").type(JsonFieldType.STRING).description("전시 장소 지번 주소"),
                                 fieldWithPath("placeStreet").type(JsonFieldType.STRING).description("전시 장소 도로명 주소"),
-                                fieldWithPath("locationCode").type(JsonFieldType.STRING).description("지역"),
+                                fieldWithPath("locationCode").type(JsonFieldType.STRING).description("지역코드"),
                                 fieldWithPath("homePage").type(JsonFieldType.STRING).description("전시자 홈페이지"),
                                 fieldWithPath("tel").type(JsonFieldType.STRING).description("전시자 전화번호"),
                                 fieldWithPath("email").type(JsonFieldType.STRING).description("전시자 이메일")
@@ -77,8 +79,8 @@ class DisplayControllerTest extends ControllerTests {
         DisplayRequest param = DisplayRequest.builder()
                 .productId(2l)
                 .openingHours("2020년 3월 15일부터 2020년 4월 15일까지 진행되는 행사입니다.")
-                .startDate("2020-04-04 00:00")
-                .endDate("2020-05-04 00:00")
+                .startDisplayDate(LocalDateTime.of(2020,3,15,00,00,00))
+                .endDisplayDate(LocalDateTime.of(2020,4,15,00,00,00))
                 .place("세종정부청사")
                 .placeLot("경기도 세종시 231-31")
                 .placeStreet("경기도 세종시 세종로 132번길 34")

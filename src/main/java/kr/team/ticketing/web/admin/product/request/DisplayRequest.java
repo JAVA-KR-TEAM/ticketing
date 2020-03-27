@@ -5,6 +5,7 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import java.time.LocalDateTime;
 
@@ -14,8 +15,10 @@ import java.time.LocalDateTime;
 public class DisplayRequest {
 	private Long productId;
 	private String openingHours;
-	private String startDate;
-	private String endDate;
+	@DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss")
+	private LocalDateTime startDisplayDate;
+	@DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss")
+	private LocalDateTime endDisplayDate;
 	private String place;
 	private String placeLot;
 	private String placeStreet;
@@ -25,11 +28,11 @@ public class DisplayRequest {
 	private String email;
 
 	@Builder
-	public DisplayRequest(Long productId, String openingHours, String startDate, String endDate, String place, String placeLot, String placeStreet, String locationCode, String tel, String homePage, String email) {
+	public DisplayRequest(Long productId, String openingHours, LocalDateTime startDisplayDate, LocalDateTime endDisplayDate, String place, String placeLot, String placeStreet, String locationCode, String tel, String homePage, String email) {
 		this.productId = productId;
 		this.openingHours = openingHours;
-		this.startDate = startDate;
-		this.endDate = endDate;
+		this.startDisplayDate = startDisplayDate;
+		this.endDisplayDate = endDisplayDate;
 		this.place = place;
 		this.placeLot = placeLot;
 		this.placeStreet = placeStreet;
