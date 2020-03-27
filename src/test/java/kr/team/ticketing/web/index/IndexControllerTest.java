@@ -35,9 +35,10 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 public class IndexControllerTest extends ControllerTests {
 
 	@Autowired
-	ProductRepository productRepository;
+	private ProductRepository productRepository;
+
 	@Autowired
-	DisplayRepository displayRepository;
+	private DisplayRepository displayRepository;
 
 	@BeforeEach
 	void setup() {
@@ -115,6 +116,7 @@ public class IndexControllerTest extends ControllerTests {
 					fieldWithPath("startDisplayDate").type(JsonFieldType.STRING).description("전시 시작 날짜"),
 					fieldWithPath("endDisplayDate").type(JsonFieldType.STRING).description("전시 종료 날짜"),
 					fieldWithPath("locationCode").type(JsonFieldType.STRING).description("지역 코드")
-				)));
+				))
+			);
 	}
 }

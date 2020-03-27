@@ -60,6 +60,37 @@
 [[resources-product]]
 === 상품 API
 
+``POST`` 요청을 통해 상품을 생성한다.
 include::{snippets}/product/save/curl-request.adoc[]
 include::{snippets}/product/save/request-fields.adoc[]
 include::{snippets}/product/save/http-response.adoc[]
+
+``GET`` 요청을 통해 상품을 조회한다.
+include::{snippets}/product/findProduct/curl-request.adoc[]
+include::{snippets}/product/findProduct/http-response.adoc[]
+include::{snippets}/product/findProduct/response-body.adoc[]
+
+``POST`` 요청을 통해 상품의 옵션을 저장한다.
+include::{snippets}/product/saveOptions/curl-request.adoc[]
+include::{snippets}/product/saveOptions/request-fields.adoc[]
+include::{snippets}/product/saveOptions/response-body.adoc[]
+
+``DELETE`` 요청을 통해 상품의 옵션을 삭제한다.
+include::{snippets}/product/deleteOption/curl-request.adoc[]
+include::{snippets}/product/deleteOption/http-response.adoc[]
+
+[[resources-display]]
+=== 전시 정보 API
+
+``POST`` 요청을 통해 전시 정보를 생성한다.
+include::{snippets}/display/saveDisplay/curl-request.adoc[]
+include::{snippets}/display/saveDisplay/request-fields.adoc[]
+include::{snippets}/display/saveDisplay/response-body.adoc[]
+
+``GET`` 요청을 통해 전시 정보를 조회한다.
+include::{snippets}/display/findDisplay/curl-request.adoc[]
+include::{snippets}/display/findDisplay/http-response.adoc[]
+
+``DELELTE`` 요청을 통해 전시 정보를 삭제한다.
+include::{snippets}/display/deleteDisplay/curl-request.adoc[]
+include::{snippets}/display/deleteDisplay/http-response.adoc[]
