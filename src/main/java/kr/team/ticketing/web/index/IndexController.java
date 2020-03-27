@@ -4,6 +4,7 @@ import kr.team.ticketing.domain.product.ProductRepository;
 import kr.team.ticketing.web.index.request.SearchCondition;
 import kr.team.ticketing.web.index.response.ProductSearchResponse;
 import lombok.RequiredArgsConstructor;
+
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
@@ -20,7 +21,7 @@ public class IndexController {
 
 	@GetMapping("/search")
 	public Page<ProductSearchResponse> searchByCondition(@RequestBody SearchCondition searchCondition,
-														 @PageableDefault(size = 10, sort = "endDisplayDate", direction = Sort.Direction.DESC) Pageable pageable) {
+		@PageableDefault(size = 10, sort = "endDisplayDate", direction = Sort.Direction.DESC) Pageable pageable) {
 		return productRepository.searchByDynamicCondition(searchCondition, pageable);
 	}
 }

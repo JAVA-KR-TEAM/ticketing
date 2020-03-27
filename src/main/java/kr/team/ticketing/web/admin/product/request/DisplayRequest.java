@@ -5,6 +5,7 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+
 import org.springframework.format.annotation.DateTimeFormat;
 
 import java.time.LocalDateTime;
@@ -28,7 +29,9 @@ public class DisplayRequest {
 	private String email;
 
 	@Builder
-	public DisplayRequest(Long productId, String openingHours, LocalDateTime startDisplayDate, LocalDateTime endDisplayDate, String place, String placeLot, String placeStreet, String locationCode, String tel, String homePage, String email) {
+	public DisplayRequest(Long productId, String openingHours, LocalDateTime startDisplayDate,
+		LocalDateTime endDisplayDate, String place, String placeLot, String placeStreet, String locationCode,
+		String tel, String homePage, String email) {
 		this.productId = productId;
 		this.openingHours = openingHours;
 		this.startDisplayDate = startDisplayDate;

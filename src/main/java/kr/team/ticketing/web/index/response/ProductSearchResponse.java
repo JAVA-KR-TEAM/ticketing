@@ -12,25 +12,26 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 public class ProductSearchResponse {
 
-    private Long productId;
-    private String description;
-    private String content;
-    private String event;
-    private Long categoryId;
-    private LocalDateTime startDisplayDate;
-    private LocalDateTime endDisplayDate;
-    private LocationCode locationCode;
+	private Long productId;
+	private String description;
+	private String content;
+	private String event;
+	private Long categoryId;
+	private LocalDateTime startDisplayDate;
+	private LocalDateTime endDisplayDate;
+	private LocationCode locationCode;
 
-    @Builder
-    @QueryProjection
-    public ProductSearchResponse(Long productId,  String description, String content, String event, Long categoryId, LocalDateTime startDisplayDate, LocalDateTime endDisplayDate, LocationCode locationCode) {
-        this.productId = productId;
-        this.description = description;
-        this.content = content;
-        this.event = event;
-        this.categoryId = categoryId;
-        this.startDisplayDate = startDisplayDate;
-        this.endDisplayDate = endDisplayDate;
-        this.locationCode = locationCode;
-    }
+	@Builder
+	@QueryProjection
+	public ProductSearchResponse(Long productId, String description, String content, String event, Long categoryId,
+		LocalDateTime startDisplayDate, LocalDateTime endDisplayDate, LocationCode locationCode) {
+		this.productId = productId;
+		this.description = description;
+		this.content = content;
+		this.event = event;
+		this.categoryId = categoryId;
+		this.startDisplayDate = startDisplayDate;
+		this.endDisplayDate = endDisplayDate;
+		this.locationCode = locationCode;
+	}
 }
