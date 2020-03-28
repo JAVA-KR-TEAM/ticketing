@@ -107,15 +107,10 @@ public class IndexControllerTest extends ControllerTests {
 			.andDo(print())
 			.andExpect(status().isOk())
 			.andDo(document("index/mainview",
-				responseFields(
-					fieldWithPath("productId").type(JsonFieldType.NUMBER).description("상품 ID"),
-					fieldWithPath("description").type(JsonFieldType.STRING).description("상품 간략 설명"),
-					fieldWithPath("content").type(JsonFieldType.STRING).description("상품 상세 설명"),
-					fieldWithPath("event").type(JsonFieldType.STRING).description("상품 이벤트"),
+				requestFields(
 					fieldWithPath("categoryId").type(JsonFieldType.NUMBER).description("카테고리 ID"),
-					fieldWithPath("startDisplayDate").type(JsonFieldType.STRING).description("전시 시작 날짜"),
-					fieldWithPath("endDisplayDate").type(JsonFieldType.STRING).description("전시 종료 날짜"),
-					fieldWithPath("locationCode").type(JsonFieldType.STRING).description("지역 코드")
+					fieldWithPath("locationCode").type(JsonFieldType.STRING).description("지역 코드"),
+					fieldWithPath("month").type(JsonFieldType.NUMBER).description("월(month)")
 				))
 			);
 	}
