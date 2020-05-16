@@ -94,7 +94,7 @@ public class IndexControllerTest extends ControllerTests {
 			.contentType(MediaType.APPLICATION_JSON)
 			.content(objectMapper.writeValueAsString(searchCondition)))
 			.andDo(print())
-			.andExpect(status().isOk())
+			.andExpect(status().isOk()
 			.andDo(document("index/mainview"));
 	}
 }
