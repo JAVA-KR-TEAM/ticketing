@@ -12,23 +12,18 @@ import kr.team.ticketing.domain.product.detail.ProductType;
 import kr.team.ticketing.domain.product.display.Address;
 import kr.team.ticketing.domain.product.display.Display;
 import kr.team.ticketing.domain.product.display.DisplayRepository;
-import kr.team.ticketing.domain.product.display.LocationCode;
 import kr.team.ticketing.web.index.request.SearchCondition;
 
 import org.junit.jupiter.api.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
-import org.springframework.restdocs.payload.JsonFieldType;
 
 import java.time.LocalDateTime;
 import java.util.List;
 
 import static java.util.Arrays.asList;
-import static org.assertj.core.api.Assertions.assertThat;
 import static org.springframework.restdocs.mockmvc.MockMvcRestDocumentation.document;
-import static org.springframework.restdocs.payload.PayloadDocumentation.*;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.request;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
@@ -84,12 +79,6 @@ public class IndexControllerTest extends ControllerTests {
 		displayRepository.save(display);
 	}
 
-	@AfterEach
-	void cleanUp() {
-		displayRepository.deleteAll();
-		productRepository.deleteAll();
-	}
-
 	@Test
 	@DisplayName("메인페이지 조회 테스트")
 	public void searchByDynamicCondition() throws Exception {
@@ -106,17 +95,6 @@ public class IndexControllerTest extends ControllerTests {
 			.content(objectMapper.writeValueAsString(searchCondition)))
 			.andDo(print())
 			.andExpect(status().isOk())
-			.andDo(document("index/mainview",
-				responseFields(
-					fieldWithPath("productId").type(JsonFieldType.NUMBER).description("상품 ID"),
-					fieldWithPath("description").type(JsonFieldType.STRING).description("상품 간략 설명"),
-					fieldWithPath("content").type(JsonFieldType.STRING).description("상품 상세 설명"),
-					fieldWithPath("event").type(JsonFieldType.STRING).description("상품 이벤트"),
-					fieldWithPath("categoryId").type(JsonFieldType.NUMBER).description("카테고리 ID"),
-					fieldWithPath("startDisplayDate").type(JsonFieldType.STRING).description("전시 시작 날짜"),
-					fieldWithPath("endDisplayDate").type(JsonFieldType.STRING).description("전시 종료 날짜"),
-					fieldWithPath("locationCode").type(JsonFieldType.STRING).description("지역 코드")
-				))
-			);
+			.andDo(document("index/mainview"));
 	}
 }

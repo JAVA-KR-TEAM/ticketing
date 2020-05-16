@@ -84,6 +84,7 @@ public class Reservation extends BaseEntity {
 	public void canceled() {
 		verifyPayment();
 		this.status = ReservationStatus.CANCELED;
+		delete();
 	}
 
 	private void verifyPayment() {

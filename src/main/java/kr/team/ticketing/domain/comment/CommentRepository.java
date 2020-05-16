@@ -1,4 +1,4 @@
-package kr.team.ticketing.domain.reservation.comment;
+package kr.team.ticketing.domain.comment;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
